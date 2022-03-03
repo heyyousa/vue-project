@@ -4,7 +4,7 @@
       <el-form
         :model="signform"
         class="signform"
-        label-width="40px"
+        label-width="80px"
         :rules="signrules"
         ref="signform"
       >
@@ -47,13 +47,13 @@ export default {
           {
             requeired: true,
             message: "此为必填项",
-            trigger: blur,
+            trigger: "blur",
           },
           {
             min: 1,
             max: 15,
             message: "长度在1-15之间",
-            trigger: blur,
+            trigger: "blur",
           },
         ],
 
@@ -61,13 +61,13 @@ export default {
           {
             requeired: true,
             message: "请输入密码",
-            trigger: blur,
+            trigger: "blur",
           },
           {
             min: 1,
             max: 15,
             message: "长度在1-15位",
-            trigger: blur,
+            trigger: "blur",
           },
         ],
       },
