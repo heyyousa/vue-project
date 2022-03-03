@@ -1,9 +1,31 @@
 <template>
   <div class="vbody">
     <div class="container">
-      <el-form :model="signform">
-        <el-form-item>
-          <el-input></el-input>
+      <el-form
+        :model="signform"
+        class="signform"
+        label-width="40px"
+        :rules="signrules"
+        ref="signform"
+      >
+        <el-form-item label="账号" prop="uid">
+          <el-input
+            v-model="signform.uid"
+            placeholder="不超过15位，不允许包含中文，推荐使用本人工号"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="密码" prop="password">
+          <el-input
+            v-model="signform.password"
+            placeholder="不超过15位"
+            type="password"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="昵称" prop="username">
+          <el-input
+            v-model="signform.username"
+            placeholder="不超过15个字"
+          ></el-input>
         </el-form-item>
       </el-form>
     </div>
@@ -16,8 +38,38 @@ export default {
     return {
       signform: {
         uid: "",
-        username: "",
         password: "",
+        username: "",
+      },
+
+      signrules: {
+        uid: [
+          {
+            requeired: true,
+            message: "此为必填项",
+            trigger: blur,
+          },
+          {
+            min: 1,
+            max: 15,
+            message: "长度在1-15之间",
+            trigger: blur,
+          },
+        ],
+
+        password: [
+          {
+            requeired: true,
+            message: "请输入密码",
+            trigger: blur,
+          },
+          {
+            min: 1,
+            max: 15,
+            message: "长度在1-15位",
+            trigger: blur,
+          },
+        ],
       },
     };
   },
@@ -40,5 +92,13 @@ export default {
   top: 50%;
   transform: translate(-50%, -50%);
   border-radius: 5px;
+}
+
+.signform {
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 </style>
