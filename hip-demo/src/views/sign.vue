@@ -1,10 +1,7 @@
 <template>
   <div class="vbody">
     <div class="container">
-      <div class="iconbox">
-        <el-avatar :size="150" :src="circleUrl" class="icon"></el-avatar>
-        <div class="suf-title">选择头像</div>
-      </div>
+      <iconbox></iconbox>
       <el-form
         :model="signform"
         class="signform"
@@ -14,7 +11,7 @@
         <el-form-item label="账号" prop="uid">
           <el-input
             v-model="signform.uid"
-            placeholder="不超过15位，不允许包含中文，推荐使用本人工号"
+            placeholder="1-15位，禁止中文、空格、符号，推荐用本人工号"
           ></el-input>
         </el-form-item>
         <el-form-item label="昵称" prop="username">
@@ -30,16 +27,17 @@
             type="password"
           ></el-input>
         </el-form-item>
-        <el-form-item label="确认密码" prop="password">
+        <el-form-item label="确认密码" prop="cfmPassword">
           <el-input
-            v-model="signform.password"
+            v-model="signform.cfmPassword"
             placeholder="不超过15位"
             type="password"
           ></el-input>
         </el-form-item>
-        <el-form-item>
+        <el-form-item class="btnbox">
           <el-button type="primary">注册</el-button>
-          <el-button type="info">重置</el-button>
+          <el-button type="info" @click="resetform">重置</el-button>
+          <el-button type="info" @click="backlogin">返回首页</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -47,24 +45,23 @@
 </template>
 
 <script>
+import iconbox from "../components/iconbox.vue";
+
 export default {
   data() {
     return {
-      // 加载本地图片资源用require函数
-      circleUrl: require("../assets/logo.png"),
-
       signform: {
         uid: "",
-        password: "",
         username: "",
+        password: "",
+        cfmPassword: "",
       },
 
       signrules: {
         uid: [
           {
             requeired: true,
-            message: "此为必填项",
-            trigger: "blur",
+            message: "不能为空",
           },
           {
             min: 1,
@@ -72,6 +69,10 @@ export default {
             message: "长度在1-15之间",
             trigger: "blur",
           },
+          // {
+          //   vaildator: checkcn,
+          //   trigger: "blur",
+          // },
         ],
 
         password: [
@@ -90,6 +91,21 @@ export default {
       },
     };
   },
+  // 组件方法
+  methods: {
+    backlogin() {
+      this.$router.push("/login");
+    },
+
+    resetform() {
+      this.$refs.signform.resetFields();
+      console.log(this.$refs.signform);
+    },
+  },
+
+  components: {
+    iconbox,
+  },
 };
 </script>
 
@@ -100,19 +116,11 @@ export default {
   background-color: #3f51b5;
 }
 
-.icon {
+.iconbox {
   position: absolute;
+  z-index: 2;
   left: 50%;
-  top: -75px;
-  transform: translate(-50%);
-  cursor: pointer;
-}
-
-.suf-title {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-  top: 80px;
+  transform: translate(-50%, -50%);
 }
 
 .container {
@@ -132,5 +140,10 @@ export default {
   bottom: 0px;
   padding: 0 20px;
   box-sizing: border-box;
+}
+
+.btnbox {
+  display: flex;
+  justify-content: flex-end;
 }
 </style>

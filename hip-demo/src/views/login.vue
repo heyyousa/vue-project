@@ -19,7 +19,7 @@
           ></el-input>
         </el-form-item>
         <el-form-item class="btnbox">
-          <el-button type="primary">登录</el-button>
+          <el-button type="primary" @click="showpty">登录</el-button>
           <el-button type="success" @click="gosignup">注册</el-button>
         </el-form-item>
       </el-form>
@@ -43,6 +43,10 @@ export default {
     gosignup() {
       // 使用编程式导航跳转到注册组件
       this.$router.push("/sign");
+    },
+
+    showpty() {
+      console.log(this["axios"]);
     },
   },
 };
@@ -75,7 +79,7 @@ export default {
   transform: translate(-50%, -50%);
   border: 1px solid #bbb;
   background-color: #bbb;
-  padding: 10px;
+  padding: 6px;
 }
 
 .iconimg {
