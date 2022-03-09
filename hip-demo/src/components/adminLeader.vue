@@ -6,6 +6,7 @@
       <iconbox></iconbox>
     </div>
     <router-view></router-view>
+    <div class="btnbox"></div>
   </div>
 </template>
 
