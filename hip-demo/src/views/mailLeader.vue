@@ -2,7 +2,7 @@
   <el-container class="container">
     <el-aside>
       <el-menu
-        default-active="2"
+        default-active="1"
         class="el-menu-vertical-demo"
         @open="handleOpen"
         @close="handleClose"
@@ -37,8 +37,18 @@
 <script>
 export default {
   methods: {
+    handleOpen(key, keyPath) {
+      console.log(key, keyPath);
+    },
+    handleClose(key, keyPath) {
+      console.log(key, keyPath);
+    },
+
     gomailbox() {
       this.$router.push("/mailLeader/mails");
+      console.log(this.$router);
+      console.log(this.$route);
+      console.log(this.$route.fullPath);
     },
 
     goadmin() {

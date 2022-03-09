@@ -6,6 +6,8 @@ from django.db.models import Q
 from django.core import serializers
 from django.shortcuts import render, redirect
 import json
+import socket
+
 
 # Create your views here.
 
@@ -13,25 +15,30 @@ def get_uicons(request):
     iconslist = Usericons.objects.filter(Q(is_active=True))
     allicons = []
 
-    for i in range(0,len(iconslist)):
+    for i in range(0, len(iconslist)):
         iconsobj = {}
-        iconsobj['index']=iconslist[i].index
-        iconsobj['url']=iconslist[i].iconurl
+        iconsobj['index'] = iconslist[i].index
+        iconsobj['url'] = iconslist[i].iconurl
         allicons.append(iconsobj)
 
     jsondata = json.dumps(allicons)
 
     return HttpResponse(jsondata)
 
+
 def update_icons(request):
-    iconfolder =os.path.abspath('media\\img\\usericon\\')
+    iconfolder = os.path.abspath('media\\img\\usericon\\')
     iconslist = os.listdir(iconfolder)
+
+    # 自动识别后端主机ip给图片url用
+    hostname = socket.gethostname()
+    hostip = socket.gethostbyname(hostname)
 
     db_last_icon = Usericons.objects.last()
     # 数据库内icon为空时执行
     if not bool(db_last_icon):
         # 头像根路径
-        baseurl = 'http://192.168.31.53:8000/media/img/usericon/'
+        baseurl = 'http://' + hostip + ':8000/media/img/usericon/'
 
         for n in range(0, len(iconslist)):
             new_last = Usericons.objects.last()
@@ -48,3 +55,5 @@ def update_icons(request):
             Usericons.objects.create(index=iconindex, iconurl=iconurl)
 
     return HttpResponse('1')
+
+

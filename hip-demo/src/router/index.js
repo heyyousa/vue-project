@@ -21,6 +21,7 @@ const routes = [
     path: '/mailLeader',
     component: mailLeader,
     children: [
+      { path: '', component: mailboxLeader },
       { path: 'mails', component: mailboxLeader },
       {
         path: 'admin',

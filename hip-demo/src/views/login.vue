@@ -19,7 +19,7 @@
           ></el-input>
         </el-form-item>
         <el-form-item class="btnbox">
-          <el-button type="primary" @click="showpty">登录</el-button>
+          <el-button type="primary" @click="showmail">登录</el-button>
           <el-button type="success" @click="gosignup">注册</el-button>
         </el-form-item>
       </el-form>
@@ -45,8 +45,8 @@ export default {
       this.$router.push("/sign");
     },
 
-    showpty() {
-      console.log(this["axios"]);
+    showmail() {
+      this.$router.push("/mailLeader");
     },
   },
 };
