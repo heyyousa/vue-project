@@ -18,7 +18,8 @@
     </div>
     <el-table :data="mailsData" stripe style="width: 100%">
       <el-table-column prop="date" label="日期" width="105"> </el-table-column>
-      <el-table-column prop="name" label="昵称" width="130"> </el-table-column>
+      <el-table-column prop="name" label="发送人" width="130">
+      </el-table-column>
       <el-table-column prop="address" label="标题"> </el-table-column>
     </el-table>
   </div>
@@ -62,6 +63,6 @@ export default {
 
 .item {
   margin-top: 10px;
-  margin-right: 40px;
+  margin-right: 30px;
 }
 </style>

@@ -2,15 +2,16 @@
   <el-container class="container">
     <el-aside>
       <el-menu
-        default-active="1"
+        :default-active="this.$route.path"
         class="el-menu-vertical-demo"
         @open="handleOpen"
         @close="handleClose"
         background-color="#545c64"
         text-color="#fff"
         active-text-color="#ffd04b"
+        :router="true"
       >
-        <el-menu-item index="1" @click="gomailbox">
+        <el-menu-item index="/mailLeader/mails">
           <i class="el-icon-s-promotion"></i>
           <span slot="title">意见箱</span>
         </el-menu-item>
@@ -22,7 +23,7 @@
           <i class="el-icon-document"></i>
           <span slot="title">文件共享</span>
         </el-menu-item>
-        <el-menu-item index="4" @click="goadmin">
+        <el-menu-item index="/mailLeader/admin">
           <i class="el-icon-user"></i>
           <span slot="title">个人中心</span>
         </el-menu-item>
@@ -46,9 +47,6 @@ export default {
 
     gomailbox() {
       this.$router.push("/mailLeader/mails");
-      console.log(this.$router);
-      console.log(this.$route);
-      console.log(this.$route.fullPath);
     },
 
     goadmin() {

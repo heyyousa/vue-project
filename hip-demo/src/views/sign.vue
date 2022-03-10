@@ -7,6 +7,7 @@
         class="signform"
         label-width="70px"
         ref="signform"
+        :rules="signrules"
       >
         <el-form-item label="账号" prop="uid">
           <el-input
@@ -62,11 +63,12 @@ export default {
           {
             requeired: true,
             message: "不能为空",
+            trigger: "blur",
           },
           {
             min: 1,
             max: 15,
-            message: "长度在1-15之间",
+            message: "长度在1-15位之间",
             trigger: "blur",
           },
           // {
@@ -75,10 +77,15 @@ export default {
           // },
         ],
 
+        username: [
+          { requeired: true, message: "不能为空" },
+          { min: 1, max: 15, message: "长度在1-15位之间", trigger: "blur" },
+        ],
+
         password: [
           {
             requeired: true,
-            message: "请输入密码",
+            message: "不能为空",
             trigger: "blur",
           },
           {
@@ -99,10 +106,9 @@ export default {
 
     resetform() {
       this.$refs.signform.resetFields();
-      console.log(this.$refs.signform);
     },
   },
-
+  // 注册组件
   components: {
     iconbox,
   },

@@ -10,7 +10,9 @@
       border
     >
       <template slot="extra">
-        <el-button type="primary" size="small">编辑</el-button>
+        <el-button type="primary" size="small" @click="goinfoform"
+          >编辑</el-button
+        >
       </template>
       <el-descriptions-item>
         <template slot="label">
@@ -74,8 +76,18 @@
 
 <script>
 export default {
+  name: "userinfolist",
+
   data() {
-    return {};
+    return {
+      comflag: "2",
+    };
+  },
+
+  methods: {
+    goinfoform() {
+      this.$emit("comflagchange", this.comflag);
+    },
   },
 };
 </script>

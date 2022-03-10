@@ -67,7 +67,6 @@ export default {
 
 <style lang="less" scoped>
 .iconbox {
-  position: relative;
   width: 150px;
 }
 
