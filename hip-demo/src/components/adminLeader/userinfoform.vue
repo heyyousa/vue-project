@@ -3,12 +3,12 @@
     <el-form
       :model="infoform"
       :rules="inforules"
-      ref="ruleForm"
+      ref="infoform"
       label-width="100px"
       class="userinfoform"
       style="font-size: 20px"
     >
-      <el-form-item label="昵称" prop="username" :required="true">
+      <el-form-item label="昵称" prop="username">
         <el-input v-model="infoform.name"></el-input>
       </el-form-item>
       <el-form-item label="真实姓名" prop="realname">
@@ -64,7 +64,7 @@ export default {
         introduce: "",
       },
       inforules: {
-        username: [],
+        username: [{ required: true, message: "不能为空" }],
         realname: [],
         sex: [],
         phonenum: [],
@@ -78,6 +78,10 @@ export default {
   methods: {
     goinfolist() {
       this.$emit("comflagchange", this.comflag);
+    },
+
+    resetForm(formName) {
+      this.$refs[formName].resetFields();
     },
   },
 };

@@ -32,6 +32,7 @@ export default {
     return {
       iconurl: "",
       imgerror: require("../../assets/img/imgerror.png"),
+      //用户信息
       uinfo: {},
       // comname: "userinfolist",
       comflag: "1",

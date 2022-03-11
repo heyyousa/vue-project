@@ -15,11 +15,11 @@
           <i class="el-icon-s-promotion"></i>
           <span slot="title">意见箱</span>
         </el-menu-item>
-        <el-menu-item index="2">
+        <el-menu-item index="2" disabled>
           <i class="el-icon-menu"></i>
           <span slot="title">院内贴吧</span>
         </el-menu-item>
-        <el-menu-item index="3">
+        <el-menu-item index="3" disabled>
           <i class="el-icon-document"></i>
           <span slot="title">文件共享</span>
         </el-menu-item>
