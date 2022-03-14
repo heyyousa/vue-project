@@ -8,7 +8,7 @@ import mailLeader from '../views/mailLeader.vue'
 // 页面内路由组件导入
 import mailboxLeader from '../components/mailboxLeader.vue'
 import adminLeader from '../components/adminLeader/adminLeader.vue'
-
+import dealexcel from '../components/dealexcel/dealexcel.vue'
 
 
 Vue.use(VueRouter)
@@ -22,6 +22,7 @@ const routes = [
     component: mailLeader,
     children: [
       { path: '', redirect: 'mails' },
+      { path: 'dealexcel', component: dealexcel },
       { path: 'mails', component: mailboxLeader },
       {
         path: 'admin',

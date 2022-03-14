@@ -1,4 +1,4 @@
-#!d:\vue-project\hip-django\hipenv\scripts\python.exe
+#!f:\vue-project\hip-django\hipenv\scripts\python.exe
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 

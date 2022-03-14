@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="D:\vue-project\hip-django\hipenv"
+VIRTUAL_ENV="F:\vue-project\hip-django\hipenv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
